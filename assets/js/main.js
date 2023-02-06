@@ -9,6 +9,17 @@
 	var	$window = $(window),
 		$body = $('body');
 
+	var rotatables = document.getElementsByClassName("rotatable");
+	var leng=[0,0];
+	var swap = 0;
+	for (var i = 0; i < rotatables.length; i++) {
+	var ramping = 2/(1+Math.exp(10*(Math.random()-0.5)))-1;
+	if (leng[0]==leng[1] && Math.sign(leng[0])==Math.sign(ramping)) {ramping=-ramping;}
+	leng[swap]=Math.sign(ramping);
+	swap = 1-swap;
+	rotatables[i].style.webkitTransform = "rotate(" + (4*ramping).toString() + "deg)";
+	}
+
 	// Breakpoints.
 		breakpoints({
 			xlarge:  [ '1281px',  '1680px' ],
