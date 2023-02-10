@@ -206,6 +206,7 @@ input, select, textarea {
 		margin: 0 auto;
 		max-width: 100%;
 		width: 1400px;
+
 	}
 
 		@media screen and (max-width: 1680px) {
@@ -1812,6 +1813,7 @@ input, select, textarea {
 		border: 10px solid #826F5A;
 		box-shadow: 0px 6px 0px 2px rgba(0, 0, 0, 0.1);
 		padding: 2em;
+		font-size: 16px
 	}
 
 		.box.feature {
@@ -1957,6 +1959,14 @@ input, select, textarea {
 		/*main content bg color COLOR*/
 		box-shadow: 0px 3px 0px 0px rgba(0, 0, 0, 0.05);
 		padding: 5em 0 5em 0;
+
+		background: #D2C2AF;
+		background-image: url("images/retina-wood.png");
+		/* color COLOR of body text boxes at bottom */
+		border-top: 6px solid #826F5A;
+		border-bottom: 6px solid #826F5A;
+		box-shadow: 0px 6px 0px 2px rgba(0, 0, 0, 0.1);
+		font-size: 16px
 	}
 
 	#footer-wrapper {
@@ -2130,7 +2140,7 @@ input, select, textarea {
 		/* bg color COLOR*/
 		color: #2b3b45;
 		/*text color COLOR*/
-		padding: 4.5em;
+		padding: 4em;
 		border-radius: 8px;
 		border: 10px solid #70C183;
 	}
@@ -2141,7 +2151,7 @@ input, select, textarea {
 		}
 
 		#banner p {
-			font-size: 2.0em;
+			font-size: 1.6em;
 			line-height: 1.35em;
 			margin: 0;
 		}
