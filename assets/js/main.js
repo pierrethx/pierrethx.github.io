@@ -35,6 +35,11 @@
 			}, 100);
 		});
 
+	// Header sticker tabs: each gets a random tilt between -10 and 10 degrees.
+		$('#nav > ul > li > a').each(function() {
+			this.style.setProperty('--rot', (Math.random() * 20 - 10).toFixed(2) + 'deg');
+		});
+
 	// Dropdowns.
 		$('#nav > ul').dropotron({
 			mode: 'fade',
@@ -50,7 +55,10 @@
 					'<a href="#navPanel" class="toggle"></a>' +
 				'</div>'
 			)
-				.appendTo($body);
+				.appendTo('#header');
+
+			// Sticker button sits in the header and is tilted a random -10 to 10 degrees.
+			$('#navToggle .toggle')[0].style.setProperty('--ham-rot', (Math.random() * 20 - 10).toFixed(2) + 'deg');
 
 		// Panel.
 			$(
@@ -61,13 +69,23 @@
 				'</div>'
 			)
 				.appendTo($body)
+				.each(function() {
+					// Menu stickers copy the header's: same tilt, and the current page's is upright and bigger.
+					var panelLinks = $(this).find('a.link');
+					$('#nav > ul > li').each(function(i) {
+						var l = panelLinks[i], a = $(this).children('a')[0];
+						if (!l) return;
+						l.style.setProperty('--rot', a.style.getPropertyValue('--rot') || '0deg');
+						if ($(this).hasClass('current')) l.classList.add('current');
+					});
+				})
 				.panel({
 					delay: 500,
 					hideOnClick: true,
 					hideOnSwipe: true,
 					resetScroll: true,
 					resetForms: true,
-					side: 'left',
+					side: 'right',
 					target: $body,
 					visibleClass: 'navPanel-visible'
 				});

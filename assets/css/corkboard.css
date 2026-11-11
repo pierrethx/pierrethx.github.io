@@ -1,0 +1,607 @@
+/* Corkboard theme: loaded after main.css. Only changes looks, no text. */
+
+:root {
+	--cork: #c8996a;
+	--cork-dark: #a97a4d;
+	--paper: #fffdf6;
+	--ink: #3b2f2a;
+	--pin-red: #d64545;
+	--pin-blue: #3f7fd1;
+	--pin-yellow: #e8b92f;
+	--hand: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+/* Cork photo background: scrolls with the page, tiles at a fixed size */
+body, #page-wrapper {
+	background-color: var(--cork);
+	background-image: url("../../images/cork.jpg");
+	background-size: 1000px auto;
+	background-repeat: repeat;
+	background-attachment: scroll;
+}
+
+#banner-wrapper { padding-top: 3em; }
+
+#header-wrapper, #banner-wrapper, #features-wrapper, #footer-wrapper {
+	background: transparent;
+}
+
+/* Header: wood grain strip */
+#header-wrapper {
+	background: url("../../images/wood.jpg") center top / 2000px auto no-repeat;
+	padding: 1.8em 0;
+	border: 0;
+	box-shadow:
+		inset 0 2px 0 rgba(255, 225, 180, .22),   /* light catching the top edge */
+		inset 0 -2px 0 rgba(0, 0, 0, .35),        /* dark underside bevel */
+		inset 0 -8px 12px -6px rgba(0, 0, 0, .30),
+		0 1px 2px rgba(0, 0, 0, .55),             /* tight contact shadow */
+		0 4px 8px rgba(0, 0, 0, .30),
+		0 14px 28px rgba(0, 0, 0, .28);           /* wide soft shadow */
+}
+#logo { transform: rotate(-1.5deg); }
+#logo h1 { background: none; box-shadow: none; border: 0; }
+#logo h1 a {
+	display: inline-block;
+	padding: .35em 1.6em;
+	background: url("../../images/tape.png") center / 100% 100% no-repeat;
+	font-family: var(--hand);
+	color: var(--ink);
+	filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, .45));
+}
+#nav > ul > li > a { font-family: var(--hand); color: #fff3d9; }
+#nav > ul > li.current > a,
+#nav > ul > li:hover > a { background: rgba(255, 243, 217, .18); border-radius: 6px; }
+
+/* Cards: paper notes pinned to the board */
+.box {
+	position: relative;
+	background-color: var(--paper);
+	/* paper grain: a stronger tile of my own on top of the template's paper image */
+	background-image: url("../../images/paper_strong.png"), url("images/natural-paper.png");
+	color: var(--ink);
+	border: 0;
+	border-radius: 3px;
+	box-shadow: 2px 4px 10px rgba(50, 25, 5, .40);
+}
+.box h2, .box h3 { font-family: var(--hand); color: var(--ink); }
+.box a { color: #2d6aa8; }
+
+/* Pushpin on every card */
+.box::before {
+	content: "";
+	position: absolute;
+	top: 8px; left: 50%;
+	width: 18px; height: 18px;
+	margin-left: -9px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 30%, #fbe9e6 0 12%, var(--pin-red) 40%, #8f2323 100%);
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, .40);
+	z-index: 5;
+}
+#features-wrapper .col-4:nth-child(2) .box::before { background: radial-gradient(circle at 35% 30%, #fbe9e6 0 12%, var(--pin-blue) 40%, #1f4c8c 100%); }
+#features-wrapper .col-4:nth-child(3) .box::before { background: radial-gradient(circle at 35% 30%, #fbe9e6 0 12%, var(--pin-yellow) 40%, #9b7410 100%); }
+
+/* Slight tilt on the cards (each keeps a different angle) */
+#features-wrapper .col-4:nth-child(1) .box { transform: rotate(-1.6deg); }
+#features-wrapper .col-4:nth-child(2) .box { transform: rotate(1.2deg); }
+#features-wrapper .col-4:nth-child(3) .box { transform: rotate(-0.8deg); }
+#banner.box { transform: rotate(.4deg); }
+#features-wrapper .box { transition: transform .2s ease, box-shadow .2s ease; }
+#features-wrapper .box:hover { transform: rotate(0) scale(1.02); box-shadow: 4px 10px 18px rgba(50, 25, 5, .45); z-index: 3; }
+
+
+
+
+/* Green banner: a paper note pinned to the board (no colored border) */
+#banner.box {
+	border: 0;
+	border-radius: 2px;
+	background-color: #aee6a0;
+	box-shadow:
+		inset 0 0 40px rgba(60, 120, 60, .12),   /* slightly darker paper toward the edges */
+		0 1px 2px rgba(40, 20, 5, .55),          /* tight contact shadow */
+		2px 5px 8px rgba(40, 20, 5, .30),
+		6px 14px 24px rgba(40, 20, 5, .28);      /* soft cast shadow */
+}
+
+/* Polaroids: white frame, extra room at the bottom for a handwritten caption */
+.polaroid, .polaroid:hover {
+	text-decoration: none;
+	border-bottom: 0;
+}
+.polaroid {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	background: #fff;
+	padding: 10px 10px 0;
+	box-shadow: 1px 3px 7px rgba(0, 0, 0, .35);
+}
+.polaroid img,
+#banner .polaroid img,
+.box.feature .image.polaroid img {
+	display: block;
+	width: 100%;
+	margin: 0;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+.polaroid .caption {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 80%;
+	min-height: 4em;
+	margin: 0 auto;
+	padding: .4em 0;
+	line-height: 1.3;
+	text-align: center;
+	font-family: "Bradley Hand", "Segoe Print", "Snell Roundhand", "Apple Chancery", cursive;
+	font-size: 1.35rem;
+	color: #2b3a67;
+	transform: rotate(-1.5deg);
+	text-decoration: none;
+	border-bottom: 0;
+}
+/* Tape on the main photo */
+#banner .polaroid::after {
+	content: "";
+	position: absolute;
+	top: -12px; left: 50%;
+	width: 90px; height: 24px;
+	margin-left: -45px;
+	background: rgba(255, 230, 140, .65);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	transform: rotate(-3deg);
+}
+
+/* Paragraph gap between the two lines of intro text in the green panel */
+#banner p + p { margin-top: 1.2em; }
+
+/* Small mode: where the layout collapses to one column (up to 980px) */
+@media screen and (max-width: 980px) {
+	/* polaroids about 10% smaller, centered */
+	#banner .polaroid,
+	.image.featured.polaroid {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	/* push the green-panel photo down so its tape clears the text above */
+	#banner .polaroid { margin-top: 3em; }
+	/* tape on the green-panel photo twice as big */
+	#banner .polaroid::after {
+		width: 180px; height: 48px;
+		top: -24px;
+		margin-left: -90px;
+	}
+}
+
+/* Smallest mode (template's "small" breakpoint, up to 736px): tape 30% smaller */
+@media screen and (max-width: 736px) {
+	#banner .polaroid { margin-top: 2.4em; }
+	#banner .polaroid::after {
+		width: 126px; height: 34px;
+		top: -17px;
+		margin-left: -63px;
+	}
+}
+
+/* Contact panel: yellow, business-card proportions, pinned like the green panel */
+#contact-wrapper { padding: 3em 0 0; background: transparent; }
+#contact-card {
+	max-width: 480px;
+	min-height: 0;
+	margin: 0 auto;
+	padding: .8em 2.6em;
+	text-align: left;
+	background-color: #fbe27a;
+	background-image: url("../css/images/natural-paper.png");
+	border: 0;
+	border-radius: 2px;
+	transform: rotate(-1deg);
+	box-shadow:
+		inset 0 0 40px rgba(150, 110, 20, .14),
+		0 1px 2px rgba(40, 20, 5, .55),
+		2px 5px 8px rgba(40, 20, 5, .30),
+		6px 14px 24px rgba(40, 20, 5, .28);
+}
+#contact-card { container-type: inline-size; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+#contact-card p { margin: 0; }
+#contact-card .card-name {
+	font-family: var(--hand);
+	font-weight: bold;
+	font-size: 10.9cqw;              /* sized so the name spans the card */
+	line-height: 1.1;
+	white-space: nowrap;
+	margin-bottom: .15em;
+}
+#contact-card .card-title {
+	font-family: var(--hand);
+	font-style: italic;
+	font-size: 1.65rem;            /* 1.5 x the previous 1.1rem */
+	padding-bottom: .5em;
+	margin-bottom: .6em;
+	border-bottom: 2px solid rgba(59, 47, 42, .35);
+}
+#contact-card .card-line {
+	display: flex;
+	align-items: baseline;
+	gap: .7em;
+	font-size: 1.5em;              /* 1.5 x the previous size */
+	line-height: 1.35;
+}
+#contact-card .card-line + .card-line { margin-top: .5em; }
+#contact-card .card-line .icon { flex: 0 0 1.4em; text-align: center; color: #6b4f1d; }
+
+
+/* Hamburger: a sticker that lives inside the header (moved there by main.js) */
+@media screen and (max-width: 980px) {
+	#navToggle {
+		position: absolute;
+		left: auto; right: 1.4em;
+		top: 50%;
+		width: auto; height: auto;
+		transform: translateY(-50%);
+		z-index: 10;
+	}
+	/* it rides along with the page when the menu slides open, so cancel the template's extra shift */
+	body.navPanel-visible #navToggle { transform: translateY(-50%); }
+	#navToggle .toggle {
+		display: block;
+		width: 64px; height: 64px;
+		opacity: 1;
+		background: url("../../images/hamburger.png") center / contain no-repeat;
+		transform: rotate(var(--ham-rot, 0deg));
+		filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, .35));
+		transition: transform .15s ease;
+	}
+	#navToggle .toggle:before { content: none; }
+	#navToggle .toggle:hover { transform: rotate(var(--ham-rot, 0deg)) scale(1.06); }
+	#navToggle .toggle:active { opacity: 1; transform: rotate(var(--ham-rot, 0deg)) scale(.95); }
+}
+
+/* Name tape vs. sticker, in three stages as the window narrows (up to 980px):
+   1. enough room: the tape stays centered, at full size
+   2. centered tape would touch the sticker: the tape slides left to stay clear of it
+   3. it has slid as far left as it can: the tape shrinks.
+   Numbers: 12.23 = tape width in font-size units; 88.5vw ~ header width; 112px = sticker zone + gap. */
+@media screen and (max-width: 980px) {
+	#header-wrapper {
+		text-align: left;
+		--fs: min(3em, calc((88.5vw - 112px) / 12.23));
+	}
+	#logo {
+		margin-left: max(0px, min(
+			calc((100% - var(--fs) * 12.23) / 2),
+			calc(100% - 112px - var(--fs) * 12.23)
+		));
+	}
+	#logo h1 {
+		white-space: nowrap;
+		font-size: var(--fs);
+	}
+}
+@media screen and (max-width: 736px) {
+	#header-wrapper { --fs: min(3em, calc((100vw - 124px) / 12.23)); }   /* header is ~100vw - 12px here */
+}
+
+/* very narrow windows: the name stacks onto two lines on the tape, and the header gets tighter */
+@media screen and (max-width: 519px) {
+	#logo { margin-left: 0; max-width: calc(100% - 5.6em); }
+	#header { margin-left: 16px; margin-right: 16px; }
+	#navToggle { right: .2em; }
+	#navToggle .toggle { width: 56px; height: 56px; }
+	#logo h1 {
+		white-space: normal;
+		font-size: min(2.2em, calc((100vw - 150px) / 7.6));
+	}
+	#logo h1 a {
+		padding-left: .9em;
+		padding-right: .9em;
+		text-align: center;
+		line-height: 1.15;
+	}
+}
+
+/* Fixed-height wood header at every screen size; the tape and sticker are centered vertically inside it */
+#header-wrapper {
+	--header-h: 139px;               /* change this one number to make the header taller or shorter */
+	box-sizing: border-box;
+	height: var(--header-h);
+	padding-top: 0;
+	padding-bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Menu panel slides in from the right: page shifts left, panel waits off the right edge */
+@media screen and (max-width: 980px) {
+	#navPanel {
+		left: auto;
+		right: 0;
+		transform: translateX(275px);
+		background:
+			linear-gradient(to right, rgba(60, 40, 20, .16), rgba(60, 40, 20, 0) 12px),
+			#fbfbf8 url('../../images/graph.jpg') 0 0 / 420px auto repeat;
+		box-shadow: inset 1px 0 0 #7a7a7a;
+		transition: transform .5s ease, box-shadow .5s ease;
+		padding: 0 20px 0 23px;
+	}
+	/* menu entries are the header's stickers, stacked */
+	#navPanel nav { padding: 28px 0 20px; }
+	#navPanel .link,
+	#navPanel .link:first-child {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		width: 128px;
+		height: 95px;
+		margin: 0 auto 14px;
+		padding: 0 0 5px;
+		border: 0;
+		background: url("../../images/sticker.png") center / 100% 100% no-repeat;
+		color: #fff;
+		font-family: var(--hand);
+		font-weight: bold;
+		font-size: 17px;
+		line-height: 1;
+		letter-spacing: .03em;
+		text-shadow: 0 1px 2px rgba(80, 0, 0, .55);
+		filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, .4));
+		transform: rotate(var(--rot, 0deg));
+	}
+	#navPanel .link.current { width: 160px; height: 119px; font-size: 21px; transform: none; }
+	#navPanel .link:nth-child(2) { background-image: url("../../images/sticker_blue.png"); }
+	#navPanel .link:nth-child(3) {
+		background-image: url("../../images/sticker_yellow.png");
+		color: var(--ink);
+		text-shadow: 0 1px 1px rgba(255, 245, 200, .6);
+	}
+	#navPanel .link:nth-child(4) { background-image: url("../../images/sticker_green.png"); }
+	/* sheet of paper lying over the page: soft shadow cast onto everything to its left */
+	body.navPanel-visible #navPanel {
+		transform: translateX(0);
+		box-shadow:
+			inset 1px 0 0 #7a7a7a,
+			-2px 0 3px rgba(0, 0, 0, .25),
+			-10px 0 24px rgba(0, 0, 0, .35),
+			-26px 0 60px rgba(0, 0, 0, .22);
+	}
+	body.navPanel-visible #page-wrapper { transform: none; }
+}
+
+/* Laptop widths: the header is 960px wide and the four nav tabs take about half of it,
+   so the name tape is a bit smaller here to stay clear of them */
+@media screen and (min-width: 981px) and (max-width: 1280px) {
+	#logo h1 { font-size: 2.7em; }
+}
+
+/* Header tabs: red stickers with the label printed on them (fixed size, not tied to screen width) */
+#nav {
+	font-size: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+#nav ul { margin: 0; }
+#nav ul li {
+	line-height: 0;
+	padding-left: 18px;              /* space between stickers */
+}
+#nav ul li a,
+#nav ul li:hover a,
+#nav ul li.active a,
+#nav ul li.current a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 104px;
+	height: 77px;
+	padding: 0 0 4px;
+	border-radius: 0;
+	background: url("../../images/sticker.png") center / 100% 100% no-repeat;
+	color: #fff;
+	font-family: var(--hand);
+	font-weight: bold;
+	font-size: 17px;
+	line-height: 1;
+	letter-spacing: .03em;
+	text-shadow: 0 1px 2px rgba(80, 0, 0, .55);
+	filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, .4));
+	transition: transform .15s ease;
+}
+#nav ul { display: flex; align-items: center; }
+
+/* tabs you're not on are 10% smaller than the current page's sticker */
+#nav ul li a,
+#nav ul li:hover a,
+#nav ul li.active a {
+	width: 84.2px;
+	height: 62.4px;
+	font-size: 13.8px;
+}
+#nav ul li.current a { width: 114.4px; height: 84.7px; font-size: 18.7px; }   /* current page: bigger */
+
+/* random tilt per sticker (--rot, -10deg to 10deg) is set in main.js.
+   Vertical position: stickers sit 10px high; the current page's sticker sits 10px low. */
+#nav ul li a { transform: translateY(-10px) rotate(var(--rot, 0deg)); }
+#nav ul li:hover a { transform: translateY(-10px) rotate(var(--rot, 0deg)) scale(1.07); }
+/* the current page's sticker stays upright so it reads as "you are here" */
+#nav ul li.current a { transform: translateY(10px); }
+#nav ul li.current:hover a { transform: translateY(10px) scale(1.07); }
+
+/* Footer: a wood strip like the header, with a stretch of tape along the bottom */
+#footer-wrapper {
+	background: url("../../images/wood.jpg") center bottom / 2000px auto no-repeat;
+	box-sizing: border-box;
+	height: 120px;
+	padding: 0;
+	border: 0;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	box-shadow:
+		inset 0 2px 0 rgba(255, 225, 180, .22),   /* light catching the top edge */
+		0 -1px 2px rgba(0, 0, 0, .55),
+		0 -4px 8px rgba(0, 0, 0, .30),
+		0 -14px 28px rgba(0, 0, 0, .28);
+}
+#footer { width: 100%; max-width: 100%; margin: 0; padding: 0; text-align: center; }
+#footer .footer-tape { margin: 0 0 16px; transform: rotate(-.8deg); }
+#footer .footer-tape span {
+	display: inline-block;
+	box-sizing: border-box;
+	max-width: calc(100% - 20px);
+	padding: .75em 3em;
+	background: url("../../images/tape_long.png") center / 100% 100% no-repeat;
+	font-family: var(--hand);
+	font-size: 1rem;
+	color: var(--ink);
+	filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, .45));
+}
+#footer .footer-tape a { color: #2d6aa8; }
+
+@media screen and (max-width: 519px) {
+	#footer .footer-tape span { padding: .6em 1.6em; font-size: .9rem; }
+}
+
+/* Sticker colors, one per tab (recolored copies of the sticker image) */
+#nav ul li:nth-child(1) a { background-image: url("../../images/sticker.png"); }
+#nav ul li:nth-child(2) a { background-image: url("../../images/sticker_blue.png"); }
+#nav ul li:nth-child(3) a {
+	background-image: url("../../images/sticker_yellow.png");
+	color: var(--ink);                       /* dark label: white is hard to read on yellow */
+	text-shadow: 0 1px 1px rgba(255, 245, 200, .6);
+}
+#nav ul li:nth-child(4) a { background-image: url("../../images/sticker_green.png"); }
+
+/* ---- Inner pages (CV, Research): main content as paper notes pinned to the board ---- */
+#main-wrapper {
+	background: transparent;
+	border: 0;                       /* template draws a brown rule above and below the content */
+	box-shadow: none;
+	padding: 3em 0 3em;
+}
+#main-wrapper #content { border-bottom: 0; padding-bottom: 0; }
+
+#main-wrapper #content article,
+#main-wrapper #sidebar section {
+	position: relative;
+	padding: 2.2em 2.4em;
+	margin-bottom: 2.2em;
+	background-color: var(--paper);
+	background-image: url("../../images/paper_strong.png"), url("images/natural-paper.png");
+	color: var(--ink);
+	border-radius: 2px;
+	box-shadow:
+		0 1px 2px rgba(40, 20, 5, .55),
+		2px 5px 8px rgba(40, 20, 5, .30),
+		6px 14px 24px rgba(40, 20, 5, .22);
+}
+#main-wrapper #content article h1,
+#main-wrapper #content article h2,
+#main-wrapper #content article h3,
+#main-wrapper #sidebar section h3 { font-family: var(--hand); color: var(--ink); }
+#main-wrapper a { color: #2d6aa8; }
+
+/* pushpin on each note */
+#main-wrapper #content article::before,
+#main-wrapper #sidebar section::before {
+	content: "";
+	position: absolute;
+	top: 8px; left: 50%;
+	width: 18px; height: 18px;
+	margin-left: -9px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 30%, #fbe9e6 0 12%, var(--pin-red) 40%, #8f2323 100%);
+	box-shadow: 2px 4px 4px rgba(0, 0, 0, .40);
+}
+#main-wrapper #sidebar section:nth-of-type(2n)::before { background: radial-gradient(circle at 35% 30%, #fbe9e6 0 12%, var(--pin-blue) 40%, #1f4c8c 100%); }
+
+/* a little tilt, like the home page notes */
+#main-wrapper #content article { transform: rotate(-.5deg); }
+#main-wrapper #sidebar section:nth-of-type(odd)  { transform: rotate(.8deg); }
+#main-wrapper #sidebar section:nth-of-type(even) { transform: rotate(-.6deg); }
+
+/* CV: the embedded PDF sits in a white-bordered frame */
+#main-wrapper article iframe {
+	display: block;
+	box-sizing: border-box;
+	background: #fff;
+	border: 10px solid #fff;
+	box-shadow: 1px 3px 7px rgba(0, 0, 0, .35);
+}
+
+/* "Find out more" style buttons: ink-colored, paper-like */
+#main-wrapper .button {
+	background: var(--ink);
+	color: #fff3d9;
+	border-radius: 3px;
+	box-shadow: 1px 2px 3px rgba(0, 0, 0, .35);
+}
+#main-wrapper .button:hover { background: #55443d; }
+
+/* Research page has several green panels stacked: keep them from touching */
+#banner-wrapper + p + #banner-wrapper, #banner-wrapper + p { margin: 0; }
+
+/* ---- Other page: template pieces (quote, rule, table, form, buttons, thumbnails) in the cork style ---- */
+#main-wrapper blockquote {
+	font-family: var(--hand);
+	font-size: 1.15em;
+	border-left: .4em solid rgba(214, 69, 69, .55);   /* pin red */
+	background: rgba(255, 255, 255, .35);
+}
+#main-wrapper hr { border-top: 2px dashed rgba(59, 47, 42, .3); margin: 1.6em 0; }
+#main-wrapper ol { padding-left: 1.5em; }
+#main-wrapper table { background: rgba(255, 255, 255, .35); }
+#main-wrapper table thead { background: var(--ink); color: #fff3d9; font-family: var(--hand); }
+#main-wrapper table tr { border-top-color: rgba(59, 47, 42, .18); }
+
+#main-wrapper form input[type="text"],
+#main-wrapper form input[type="email"],
+#main-wrapper form select,
+#main-wrapper form textarea {
+	background: rgba(255, 255, 255, .75);
+	border: 1px solid rgba(59, 47, 42, .35);
+	border-radius: 3px;
+	color: var(--ink);
+	box-shadow: inset 0 1px 2px rgba(59, 47, 42, .15);
+}
+#main-wrapper form input:focus,
+#main-wrapper form select:focus,
+#main-wrapper form textarea:focus { border-color: #2d6aa8; }
+
+#main-wrapper input[type="submit"],
+#main-wrapper input[type="reset"],
+#main-wrapper button {
+	background: var(--ink);
+	color: #fff3d9;
+	border-radius: 3px;
+	box-shadow: 1px 2px 3px rgba(0, 0, 0, .35);
+}
+#main-wrapper input[type="submit"]:hover,
+#main-wrapper input[type="reset"]:hover { background: #55443d; }
+#main-wrapper .button.alt,
+#main-wrapper input.alt {
+	background: transparent;
+	color: var(--ink);
+	box-shadow: none;
+	border: 2px solid var(--ink);
+}
+#main-wrapper .button.alt:hover,
+#main-wrapper input.alt:hover { background: rgba(59, 47, 42, .1); }
+
+/* photos inside notes: white print frames like the polaroids (no extra grey band) */
+#main-wrapper .image img {
+	border: 8px solid #fff;
+	border-bottom-width: 8px;
+	border-radius: 0;
+	box-shadow: 1px 3px 7px rgba(0, 0, 0, .35);
+}
