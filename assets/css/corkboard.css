@@ -212,10 +212,11 @@ body, #page-wrapper {
 #contact-card { container-type: inline-size; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 #contact-card p { margin: 0; }
+#contact-card .card-name span { display: inline-block; }
 #contact-card .card-name {
 	font-family: var(--hand);
 	font-weight: bold;
-	font-size: 10.9cqw;              /* sized so the name spans the card */
+	font-size: 9.5cqw;               /* fallback; main.js fits the name to the card width for whichever font the browser uses */
 	line-height: 1.1;
 	white-space: nowrap;
 	margin-bottom: .15em;

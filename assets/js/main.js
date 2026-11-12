@@ -90,4 +90,21 @@
 					visibleClass: 'navPanel-visible'
 				});
 
+
+	// Business card: scale the name so it spans the card exactly, whatever font the browser picks.
+		(function() {
+			var card = document.getElementById('contact-card');
+			if (!card) return;
+			var name = card.querySelector('.card-name'), span = name.firstElementChild;
+			function fit() {
+				var cs = getComputedStyle(card),
+					avail = card.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight),
+					size = parseFloat(getComputedStyle(name).fontSize);
+				name.style.fontSize = (size * avail / span.offsetWidth * 0.99) + 'px';
+			}
+			fit();
+			$(window).on('load resize', fit);
+			if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+		})();
+
 })(jQuery);
