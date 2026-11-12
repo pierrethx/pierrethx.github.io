@@ -44,7 +44,7 @@ body, #page-wrapper {
 #logo h1 a {
 	display: inline-block;
 	padding: .35em 1.6em;
-	background: url("../../images/tape.png") center / 100% 100% no-repeat;
+	background: url("../../images/tape.webp") center / 100% 100% no-repeat;
 	font-family: var(--hand);
 	color: var(--ink);
 	filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, .45));
@@ -58,7 +58,7 @@ body, #page-wrapper {
 	position: relative;
 	background-color: var(--paper);
 	/* paper grain: a stronger tile of my own on top of the template's paper image */
-	background-image: url("../../images/paper_strong.png"), url("images/natural-paper.png");
+	background-image: url("../../images/paper_strong.webp"), url("images/natural-paper.png");
 	color: var(--ink);
 	border: 0;
 	border-radius: 3px;
@@ -256,7 +256,7 @@ body, #page-wrapper {
 		display: block;
 		width: 64px; height: 64px;
 		opacity: 1;
-		background: url("../../images/hamburger.png") center / contain no-repeat;
+		background: url("../../images/hamburger.webp") center / contain no-repeat;
 		transform: rotate(var(--ham-rot, 0deg));
 		filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, .35));
 		transition: transform .15s ease;
@@ -347,7 +347,7 @@ body, #page-wrapper {
 		margin: 0 auto 14px;
 		padding: 0 0 5px;
 		border: 0;
-		background: url("../../images/sticker.png") center / 100% 100% no-repeat;
+		background: url("../../images/sticker.webp") center / 100% 100% no-repeat;
 		color: #fff;
 		font-family: var(--hand);
 		font-weight: bold;
@@ -359,13 +359,13 @@ body, #page-wrapper {
 		transform: rotate(var(--rot, 0deg));
 	}
 	#navPanel .link.current { width: 160px; height: 119px; font-size: 21px; transform: none; }
-	#navPanel .link:nth-child(2) { background-image: url("../../images/sticker_blue.png"); }
+	#navPanel .link:nth-child(2) { background-image: url("../../images/sticker_blue.webp"); }
 	#navPanel .link:nth-child(3) {
-		background-image: url("../../images/sticker_yellow.png");
+		background-image: url("../../images/sticker_yellow.webp");
 		color: var(--ink);
 		text-shadow: 0 1px 1px rgba(255, 245, 200, .6);
 	}
-	#navPanel .link:nth-child(4) { background-image: url("../../images/sticker_green.png"); }
+	#navPanel .link:nth-child(4) { background-image: url("../../images/sticker_green.webp"); }
 	/* sheet of paper lying over the page: soft shadow cast onto everything to its left */
 	body.navPanel-visible #navPanel {
 		transform: translateX(0);
@@ -407,7 +407,7 @@ body, #page-wrapper {
 	height: 77px;
 	padding: 0 0 4px;
 	border-radius: 0;
-	background: url("../../images/sticker.png") center / 100% 100% no-repeat;
+	background: url("../../images/sticker.webp") center / 100% 100% no-repeat;
 	color: #fff;
 	font-family: var(--hand);
 	font-weight: bold;
@@ -461,7 +461,7 @@ body, #page-wrapper {
 	box-sizing: border-box;
 	max-width: calc(100% - 20px);
 	padding: .75em 3em;
-	background: url("../../images/tape_long.png") center / 100% 100% no-repeat;
+	background: url("../../images/tape_long.webp") center / 100% 100% no-repeat;
 	font-family: var(--hand);
 	font-size: 1rem;
 	color: var(--ink);
@@ -474,14 +474,14 @@ body, #page-wrapper {
 }
 
 /* Sticker colors, one per tab (recolored copies of the sticker image) */
-#nav ul li:nth-child(1) a { background-image: url("../../images/sticker.png"); }
-#nav ul li:nth-child(2) a { background-image: url("../../images/sticker_blue.png"); }
+#nav ul li:nth-child(1) a { background-image: url("../../images/sticker.webp"); }
+#nav ul li:nth-child(2) a { background-image: url("../../images/sticker_blue.webp"); }
 #nav ul li:nth-child(3) a {
-	background-image: url("../../images/sticker_yellow.png");
+	background-image: url("../../images/sticker_yellow.webp");
 	color: var(--ink);                       /* dark label: white is hard to read on yellow */
 	text-shadow: 0 1px 1px rgba(255, 245, 200, .6);
 }
-#nav ul li:nth-child(4) a { background-image: url("../../images/sticker_green.png"); }
+#nav ul li:nth-child(4) a { background-image: url("../../images/sticker_green.webp"); }
 
 /* ---- Inner pages (CV, Research): main content as paper notes pinned to the board ---- */
 #main-wrapper {
@@ -498,7 +498,7 @@ body, #page-wrapper {
 	padding: 2.2em 2.4em;
 	margin-bottom: 2.2em;
 	background-color: var(--paper);
-	background-image: url("../../images/paper_strong.png"), url("images/natural-paper.png");
+	background-image: url("../../images/paper_strong.webp"), url("images/natural-paper.png");
 	color: var(--ink);
 	border-radius: 2px;
 	box-shadow:
