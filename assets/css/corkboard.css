@@ -606,3 +606,6 @@ body, #page-wrapper {
 	border-radius: 0;
 	box-shadow: 1px 3px 7px rgba(0, 0, 0, .35);
 }
+
+/* PERFORMANCE TEST: the next line turns off every shadow on the site. Delete it (or wrap it in comment marks) to bring the shadows back. */
+* { box-shadow: none !important; filter: none !important; text-shadow: none !important; }
