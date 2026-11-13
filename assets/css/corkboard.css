@@ -11,14 +11,16 @@
 	--hand: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
 }
 
-/* Cork photo background: scrolls with the page, tiles at a fixed size */
-body, #page-wrapper {
+/* Cork photo background: scrolls with the page, tiles at a fixed size.
+   Painted once, on body only; the image is 1000px wide and shown at 1000px, so it is never resampled. */
+body {
 	background-color: var(--cork);
 	background-image: url("../../images/cork.jpg");
-	background-size: 1000px auto;
+	background-size: 1000px 667px;
 	background-repeat: repeat;
 	background-attachment: scroll;
 }
+#page-wrapper { background: transparent; }
 
 #banner-wrapper { padding-top: 3em; }
 
