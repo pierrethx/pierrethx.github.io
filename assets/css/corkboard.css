@@ -611,7 +611,3 @@ body {
 
 /* PERFORMANCE TEST: the next line turns off every shadow on the site. Delete it (or wrap it in comment marks) to bring the shadows back. */
 * { box-shadow: none !important; filter: none !important; text-shadow: none !important; }
-
-/* PERFORMANCE TEST 3: straightens tilted notes and stickers. Delete this line to bring the tilts back.
-   (The menu panel and the hamburger button's own positioning are excluded so the menu still slides.) */
-*:not(#navPanel):not(#navToggle) { transform: none !important; }
