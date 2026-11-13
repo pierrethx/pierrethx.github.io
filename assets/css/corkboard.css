@@ -37,9 +37,8 @@ body {
 		inset 0 2px 0 rgba(255, 225, 180, .22),   /* light catching the top edge */
 		inset 0 -2px 0 rgba(0, 0, 0, .35),        /* dark underside bevel */
 		inset 0 -8px 12px -6px rgba(0, 0, 0, .30),
-		0 1px 2px rgba(0, 0, 0, .55),             /* tight contact shadow */
-		0 4px 8px rgba(0, 0, 0, .30),
-		0 14px 28px rgba(0, 0, 0, .28);           /* wide soft shadow */
+		0 2px 3px rgba(0, 0, 0, .50),             /* tight contact shadow */
+		0 8px 14px rgba(0, 0, 0, .32);            /* soft shadow */
 }
 #logo { transform: rotate(-1.5deg); }
 #logo h1 { background: none; box-shadow: none; border: 0; }
@@ -49,7 +48,7 @@ body {
 	background: url("../../images/tape.webp") center / 100% 100% no-repeat;
 	font-family: var(--hand);
 	color: var(--ink);
-	filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, .45));
+	box-shadow: 1px 2px 3px rgba(0, 0, 0, .35);
 }
 #nav > ul > li > a { font-family: var(--hand); color: #fff3d9; }
 #nav > ul > li.current > a,
@@ -60,7 +59,7 @@ body {
 	position: relative;
 	background-color: var(--paper);
 	/* paper grain: a stronger tile of my own on top of the template's paper image */
-	background-image: url("../../images/paper_strong.webp"), url("images/natural-paper.png");
+	background-image: url("../../images/paper_merged.webp");
 	color: var(--ink);
 	border: 0;
 	border-radius: 3px;
@@ -102,9 +101,8 @@ body {
 	background-color: #aee6a0;
 	box-shadow:
 		inset 0 0 40px rgba(60, 120, 60, .12),   /* slightly darker paper toward the edges */
-		0 1px 2px rgba(40, 20, 5, .55),          /* tight contact shadow */
-		2px 5px 8px rgba(40, 20, 5, .30),
-		6px 14px 24px rgba(40, 20, 5, .28);      /* soft cast shadow */
+		0 1px 2px rgba(40, 20, 5, .50),          /* tight contact shadow */
+		4px 9px 12px rgba(40, 20, 5, .30);       /* soft cast shadow */
 }
 
 /* Polaroids: white frame, extra room at the bottom for a handwritten caption */
@@ -207,9 +205,8 @@ body {
 	transform: rotate(-1deg);
 	box-shadow:
 		inset 0 0 40px rgba(150, 110, 20, .14),
-		0 1px 2px rgba(40, 20, 5, .55),
-		2px 5px 8px rgba(40, 20, 5, .30),
-		6px 14px 24px rgba(40, 20, 5, .28);
+		0 1px 2px rgba(40, 20, 5, .50),
+		4px 9px 12px rgba(40, 20, 5, .30);
 }
 #contact-card { container-type: inline-size; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -373,9 +370,8 @@ body {
 		transform: translateX(0);
 		box-shadow:
 			inset 1px 0 0 #7a7a7a,
-			-2px 0 3px rgba(0, 0, 0, .25),
-			-10px 0 24px rgba(0, 0, 0, .35),
-			-26px 0 60px rgba(0, 0, 0, .22);
+			-3px 0 5px rgba(0, 0, 0, .30),
+			-12px 0 22px rgba(0, 0, 0, .35);
 	}
 	body.navPanel-visible #page-wrapper { transform: none; }
 }
@@ -452,9 +448,8 @@ body {
 	justify-content: center;
 	box-shadow:
 		inset 0 2px 0 rgba(255, 225, 180, .22),   /* light catching the top edge */
-		0 -1px 2px rgba(0, 0, 0, .55),
-		0 -4px 8px rgba(0, 0, 0, .30),
-		0 -14px 28px rgba(0, 0, 0, .28);
+		0 -2px 3px rgba(0, 0, 0, .50),
+		0 -8px 14px rgba(0, 0, 0, .32);
 }
 #footer { width: 100%; max-width: 100%; margin: 0; padding: 0; text-align: center; }
 #footer .footer-tape { margin: 0 0 16px; transform: rotate(-.8deg); }
@@ -467,7 +462,7 @@ body {
 	font-family: var(--hand);
 	font-size: 1rem;
 	color: var(--ink);
-	filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, .45));
+	box-shadow: 1px 2px 3px rgba(0, 0, 0, .35);
 }
 #footer .footer-tape a { color: #2d6aa8; }
 
@@ -500,13 +495,12 @@ body {
 	padding: 2.2em 2.4em;
 	margin-bottom: 2.2em;
 	background-color: var(--paper);
-	background-image: url("../../images/paper_strong.webp"), url("images/natural-paper.png");
+	background-image: url("../../images/paper_merged.webp");
 	color: var(--ink);
 	border-radius: 2px;
 	box-shadow:
-		0 1px 2px rgba(40, 20, 5, .55),
-		2px 5px 8px rgba(40, 20, 5, .30),
-		6px 14px 24px rgba(40, 20, 5, .22);
+		0 1px 2px rgba(40, 20, 5, .50),
+		4px 9px 12px rgba(40, 20, 5, .28);
 }
 #main-wrapper #content article h1,
 #main-wrapper #content article h2,
@@ -608,6 +602,3 @@ body {
 	border-radius: 0;
 	box-shadow: 1px 3px 7px rgba(0, 0, 0, .35);
 }
-
-/* PERFORMANCE TEST: the next line turns off every shadow on the site. Delete it (or wrap it in comment marks) to bring the shadows back. */
-* { box-shadow: none !important; filter: none !important; text-shadow: none !important; }
