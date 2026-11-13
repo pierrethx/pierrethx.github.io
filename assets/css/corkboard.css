@@ -614,6 +614,3 @@ body {
 
 /* PERFORMANCE TEST 2: turns off the paper textures on notes. Delete this line to bring them back. */
 .box, #main-wrapper, .polaroid, #contact-card { background-image: none !important; }
-
-/* PERFORMANCE TEST 3: straightens every tilted note and sticker (some layout shifts). Delete this line to bring the tilts back. */
-* { transform: none !important; }
